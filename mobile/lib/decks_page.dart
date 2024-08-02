@@ -13,7 +13,6 @@ class DecksPage extends StatelessWidget {
           title: const Text(
             'Decks',
           ),
-          backgroundColor: Colors.amber,
         ),
         floatingActionButton: FloatingActionButton.extended(
           label: const Text("New Deck"),
@@ -24,23 +23,36 @@ class DecksPage extends StatelessWidget {
           },
           isExtended: true,
         ),
-        body: const Padding(
-          padding: EdgeInsets.only(top: 30, left: 10, right: 10),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              TotalsCard(
-                total: 5,
-                title: "Total Decks",
-              ),
-              SizedBox(
-                width: 20,
-              ),
-              TotalsCard(total: 36, title: "Total Cards")
-            ],
-          ),
+        body: const Column(
+          children: [
+            TotalsContainer(),
+            DeckList(),
+          ],
         ));
+  }
+}
+
+class TotalsContainer extends StatelessWidget {
+  const TotalsContainer({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const Padding(
+      padding: EdgeInsets.only(top: 20, bottom: 10, left: 10, right: 10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          TotalsCard(
+            total: 5,
+            title: "Total Decks",
+          ),
+          TotalsCard(total: 36, title: "Total Cards")
+        ],
+      ),
+    );
   }
 }
 
@@ -57,30 +69,86 @@ class TotalsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-        color: const Color.fromARGB(255, 255, 226, 138),
         child: Row(
-          children: [
-            Padding(
-              padding:
-                  const EdgeInsets.only(top: 5, bottom: 5, left: 40, right: 40),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
+      children: [
+        Padding(
+          padding:
+              const EdgeInsets.only(top: 5, bottom: 5, left: 40, right: 40),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 18,
+                ),
+              ),
+              Text(
+                "$total",
+                style:
+                    const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+        ),
+      ],
+    ));
+  }
+}
+
+class DeckList extends StatelessWidget {
+  const DeckList({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+        child: ListView(
+      children: [
+        for (int i = 0; i < 20; i++)
+          Card(
+            margin:
+                const EdgeInsets.only(top: 10, bottom: 10, left: 13, right: 13),
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    title,
+                    "Topic name $i",
                     style: const TextStyle(
-                      fontSize: 18,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text(
-                    "$total",
-                    style: const TextStyle(
-                        fontSize: 30, fontWeight: FontWeight.bold),
-                  ),
+                  const Row(
+                    children: [
+                      Text("10",
+                          style: TextStyle(
+                            fontSize: 16,
+                          )),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text("12",
+                          style: TextStyle(
+                            fontSize: 16,
+                          )),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text("34",
+                          style: TextStyle(
+                            fontSize: 16,
+                          )),
+                    ],
+                  )
                 ],
               ),
             ),
-          ],
-        ));
+          )
+      ],
+    ));
   }
 }

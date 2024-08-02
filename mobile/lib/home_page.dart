@@ -25,8 +25,6 @@ class _HomePageState extends State<HomePage> {
         },
         selectedIndex: currentPageIndex,
         labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
-        backgroundColor: Colors.amber,
-        indicatorColor: Colors.amber[100],
         destinations: const <Widget>[
           NavigationDestination(
             icon: Icon(Icons.view_agenda),

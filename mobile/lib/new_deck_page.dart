@@ -8,7 +8,6 @@ class NewDeckPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Create a new deck"),
-        backgroundColor: Colors.amberAccent,
       ),
       body: const Center(
         child: Text("New Deck form"),

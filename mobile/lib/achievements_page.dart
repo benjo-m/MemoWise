@@ -10,7 +10,6 @@ class AchievementsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Achievements"),
-        backgroundColor: Colors.amberAccent,
       ),
       body: const Center(child: Text("Achievements")),
     );
