@@ -1,25 +1,25 @@
+import 'package:mobile/models/card.dart';
+
 class Deck {
   final int id;
   final String title;
-  final int newCards;
-  final int learningCards;
-  final int learntCards;
+  final List<Card> cards;
 
   const Deck({
-    required this.newCards,
-    required this.learningCards,
-    required this.learntCards,
     required this.id,
     required this.title,
+    required this.cards,
   });
 
   factory Deck.fromJson(Map<String, dynamic> json) {
+    var cardsJson = json['cards'] as List;
+    List<Card> cardList =
+        cardsJson.map((cardJson) => Card.fromJson(cardJson)).toList();
+
     return Deck(
-      newCards: json['newCards'],
-      learningCards: json['learningCards'],
-      learntCards: json['learntCards'],
       id: json['id'],
       title: json['title'],
+      cards: cardList,
     );
   }
 }

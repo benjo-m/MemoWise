@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/achievements_page.dart';
-import 'package:mobile/decks_page.dart';
-import 'package:mobile/settings_page.dart';
-import 'package:mobile/stats_page.dart';
+import 'package:mobile/pages/achievements/achievements_page.dart';
+import 'package:mobile/pages/decks/decks_page.dart';
+import 'package:mobile/pages/settings/settings_page.dart';
+import 'package:mobile/pages/stats/stats_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
